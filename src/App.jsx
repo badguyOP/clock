@@ -3,11 +3,11 @@ import styles from "./App.module.css";
 
 const ClockTime = () => {
 
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setDate(new Date());
+      setDate((prevDate) => prevDate + 1);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -15,9 +15,9 @@ const ClockTime = () => {
 
   return (
     <div className={styles.clockTime}>
-      <h1 className={styles.clock}>CLOCK</h1>
+      <h1 className={styles.clock}>TIMER</h1>
       <section className={styles.timer}>
-        <h2 className={styles.pm}>{date.toLocaleTimeString()}</h2>
+        <h2 className={styles.pm}>{date}</h2>
       </section>
     </div>
   );
